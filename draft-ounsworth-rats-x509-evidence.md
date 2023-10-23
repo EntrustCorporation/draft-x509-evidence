@@ -102,9 +102,15 @@ this specification has been developed.
 This specification re-uses the claims defined in {{I-D.ietf-rats-eat}},
 and encodes them as an extension in an X.509 certificate {{RFC5280}}.
 While the encoding of the claims is different to what is defined in
-{{I-D.ietf-rats-eat}}, the semantics of the claims is retained. This specification is not an EAP profile, as defined in Section 6 of {{I-D.ietf-rats-eat}}
+{{I-D.ietf-rats-eat}}, the semantics of the claims is retained. This
+specification is not an EAP profile, as defined in Section 6 of
+{{I-D.ietf-rats-eat}}
 
-This specification was designed to meet the requirements published by the CA Browser Forum to convey properties about hardware security models, such as non-exportability, which must be enabled for storing publicly-trusted code-signing keys. Hence, this specification is supposed to be used with the attestation extension for Certificate Signing Requests (CSRs), see
+This specification was designed to meet the requirements published by the
+CA Browser Forum to convey properties about hardware security models, such
+as non-exportability, which must be enabled for storing publicly-trusted
+code-signing keys. Hence, this specification is supposed to be used with
+the attestation extension for Certificate Signing Requests (CSRs), see
 {{I-D.ietf-lamps-csr-attestation}}, but Evidence encoded as X.509 certificates
 may also be used in other context.
 
@@ -123,7 +129,9 @@ Verifier, and Relying Party.
 
 The "nonce" claim is used to provide freshness.
 
-The Nonce claim is used to carry the challenge provided by the caller to demonstrate freshness of the generated token. The following constraints apply to the nonce-type:
+The Nonce claim is used to carry the challenge provided by the caller to
+demonstrate freshness of the generated token. The following constraints
+apply to the nonce-type:
 
 - The length MUST be either 32, 48, or 64 bytes.
 - Only a single nonce value is conveyed.
@@ -139,13 +147,12 @@ The nonce claim is defined as follows:
 
 See Section 4.1 of {{I-D.ietf-rats-eat}} for a description of this claim.
 
-##  Claims Describing the Entity
+##  ueid (Universal Entity ID) Claim
 
-The claims in this section describe the entity itself.
-
-###  ueid (Universal Entity ID) Claim
-
-The "ueid" claim conveys a UEID, which identifies an individual manufactured entity. This identifier is a globally unique and permanent identifier. See Section 4.2.1 of {{I-D.ietf-rats-eat}} for a description of this claim. Three types of UEIDs are defined, which are distinguished via a type field.
+The "ueid" claim conveys a UEID, which identifies an individual manufactured
+entity. This identifier is a globally unique and permanent identifier. See
+Section 4.2.1 of {{I-D.ietf-rats-eat}} for a description of this claim. Three
+types of UEIDs are defined, which are distinguished via a type field.
 
 The ueid claim is defined as follows:
 
@@ -187,7 +194,8 @@ The sueids claim is defined as follows:
 
 ## oemid (Hardware OEM Identification) Claim
 
-The "oemid" claim identifies the Original Equipment Manufacturer (OEM) of the hardware.
+The "oemid" claim identifies the Original Equipment Manufacturer (OEM) of
+the hardware.
 
 See Section 4.2.3 of {{I-D.ietf-rats-eat}} for a description of this claim.
 
@@ -239,7 +247,8 @@ The hwmodel claim is defined as follows:
 
 ##  hwversion (Hardware Version) Claim
 
-The "hwversion" claim is a text string the format of which is set by each manufacturer. A "hwversion" claim MUST only be present if a "hwmodel" claim
+The "hwversion" claim is a text string the format of which is set by each
+manufacturer. A "hwversion" claim MUST only be present if a "hwmodel" claim
 is present.
 
 See Section 4.2.5 of {{I-D.ietf-rats-eat}} for a description of this claim.
@@ -278,8 +287,8 @@ any software debug facilities related to privileged software that
 allows system-wide memory inspection, tracing or modification of
 non-system software like user mode applications.
 
-See Section 4.2.9 of {{I-D.ietf-rats-eat}} for a description of this claim
-and the semantic of the values in the enumerated list.
+See Section 4.2.9 of {{I-D.ietf-rats-eat}} for a description of this
+claim and the semantic of the values in the enumerated list.
 
 The dbgstat claim is defined as follows:
 
@@ -298,19 +307,32 @@ The dbgstat claim is defined as follows:
 
 ## software-component Claim
 
-The Software Components claim is a list of software components that includes all the software (both code and configuration) loaded by the root of trust.
+The Software Components claim is a list of software components that includes
+all the software (both code and configuration) loaded by the root of trust.
 
-Each entry in the Software Components list describes one software component using the attributes described below:
+Each entry in the Software Components list describes one software component
+using the attributes described below:
 
-- The Measurement Type attribute is short string representing the role of this software component. Examples include the bootloader code, the bootloader configuration, and firmware running in the Trusted Execution Environment.
+- The Measurement Type attribute is short string representing the role of this
+software component. Examples include the bootloader code, the bootloader
+configuration, and firmware running in the Trusted Execution Environment.
 
-- The Measurement Value attribute represents a hash of the invariant software component in memory at startup time. The value MUST be a cryptographic hash of 256 bits or stronger. For interoperability, SHA-256 is assumed to be the default.
+- The Measurement Value attribute represents a hash of the invariant software
+component in memory at startup time. The value MUST be a cryptographic hash
+of 256 bits or stronger. For interoperability, SHA-256 is assumed to be the default.
 
-- The Signer ID attribute is the hash of a signing authority public key for the software component. This can be used by a Verifier to ensure the components were signed by an expected trusted source.
+- The Signer ID attribute is the hash of a signing authority public key for
+the software component. This can be used by a Verifier to ensure the
+components were signed by an expected trusted source.
 
-- The Measurement Description contains the OID identifying the hash algorithm used to compute the corresponding Measurement Value. For interoperability, SHA-256 is the default. If the default algorithm is used, then this field can be omitted. The values for identifying the hash algorithms MUST be taken from [IANA-HASH].
+- The Measurement Description contains the OID identifying the hash algorithm
+used to compute the corresponding Measurement Value. For interoperability,
+SHA-256 is the default. If the default algorithm is used, then this field
+can be omitted. The values for identifying the hash algorithms MUST be taken
+from [IANA-HASH].
 
-The description of the software-component claims is taken from Section 4.4.1 of {{I-D.tschofenig-rats-psa-token}}
+The description of the software-component claims is taken from Section 4.4.1
+of {{I-D.tschofenig-rats-psa-token}}
 
 The software-component claim is defined as follows:
 
@@ -367,11 +389,12 @@ from Web PKI deployment where CAs verify whether an applicant
 for a certificate legitimately represents the domain name(s) in the
 certificate. Since the Attester located at the end entity creates
 the X.509 certificate with claims defined in this document, it
-conceptually acts like a CA. This document inherits the remote attestation architecture described in {{RFC9334}}. With the re-use of the claims
-from {{I-D.ietf-rats-eat}} the security and privacy considerations
-apply also to this document even though the encoding in this
-specification is different from the encoding of claims discussed
-by {{I-D.ietf-rats-eat}}.
+conceptually acts like a CA. This document inherits the remote
+attestation architecture described in {{RFC9334}}. With the re-use
+of the claims from {{I-D.ietf-rats-eat}} the security and privacy
+considerations apply also to this document even though the encoding
+in this specification is different from the encoding of claims
+discussed by {{I-D.ietf-rats-eat}}.
 
 Evidence contains information that may be unique to a device
 and may therefore allow to single out an individual device for
@@ -401,12 +424,13 @@ based on discussions in that design team.
 
 The following persons, in no specific order, contributed to the work:
 Richard Kettlewell, Chris Trufan, Bruno Couillard, Jean-Pierre Fiset,
-Sander Temme, Jethro Beekman, Zsolt Rózsahegyi, Ferenc Pető, Mike Agrenius Kushner, Tomas Gustavsson, Dieter Bong, Christopher Meyer, Michael StJohns, Carl
-Wallace, Michael Ricardson, Tomofumi Okubo, Olivier Couillard, John
+Sander Temme, Jethro Beekman, Zsolt Rózsahegyi, Ferenc Pető, Mike Agrenius
+Kushner, Tomas Gustavsson, Dieter Bong, Christopher Meyer, Michael StJohns,
+Carl Wallace, Michael Ricardson, Tomofumi Okubo, Olivier Couillard, John
 Gray, Eric Amador, Johnson Darren, Herman Slatman, Tiru Reddy, Thomas
 Fossati, Corey Bonnel, Argenius Kushner, James Hagborg.
 
-# A. Full ASN.1 {#full-asn1}
+# Full ASN.1 {#full-asn1}
 
 TBD: Full ASN.1 goes in here.
 

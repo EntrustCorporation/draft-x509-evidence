@@ -1,7 +1,7 @@
 ---
 title: X.509-based Attestation Evidence
 abbrev: X.509-based Attestation Evidence
-docname: draft-ounsworth-rats-x509-evidence-00
+docname: draft-ounsworth-rats-x509-evidence-latest
 category: std
 
 ipr: trust200902
@@ -168,7 +168,7 @@ events while the ueid claim is permanent. An entity MAY have both
 a UEID and SUEIDs, neither, one or the other.
 
 There MAY be multiple SUEIDs and each has a text string label the
-purpose of which is to distinguish it from others. 
+purpose of which is to distinguish it from others.
 
 See Section 4.2.2 of {{I-D.ietf-rats-eat}} for a description of this claim.
 
@@ -185,7 +185,7 @@ The sueids claim is defined as follows:
    }
 ~~~
 
-## oemid (Hardware OEM Identification) Claim 
+## oemid (Hardware OEM Identification) Claim
 
 The "oemid" claim identifies the Original Equipment Manufacturer (OEM) of the hardware.
 
@@ -331,11 +331,11 @@ The software-component claim is defined as follows:
 
 ## fips_conf (Federal Information Processing Standards Conformance) Claim
 
-TBD: Tomas/Mike to add text here. 
+TBD: Tomas/Mike to add text here.
 
 ## cc_conf (Common Criteria Conformance) Claim
 
-TBD: Tomas/Mike to add text here. 
+TBD: Tomas/Mike to add text here.
 
 # Security Considerations {#sec-cons}
 

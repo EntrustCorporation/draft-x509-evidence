@@ -331,11 +331,26 @@ The software-component claim is defined as follows:
 
 ## fips_conf (Federal Information Processing Standards Conformance) Claim
 
-TBD: Tomas/Mike to add text here.
+The "fips_conf" claim applies to entity-wide or submodule-wide cryptographic modules and attests whether the cryptographic module is running in FIPS mode. A cryptographic module cannot, in general, know whether it has a valid FIPS certification, but it does know whether it is running in FIPS mode.
+
+The FIPS conformance claim is defined as follows:
+
+~~~
+   id-ce-evidence-fips_conf OBJECT IDENTIFIER ::=
+         { id-ce TBD_evidence TBD_fips_conf }
+
+   fipsconf ::= SEQUENCE {
+       fipsconf    BOOLEAN
+   }
+~~~
+
+TBD: Perhaps there is more data that needs to be here? Such as, the device may need to attest the Security Policy under which it is currently operating since for example a FIPS 140-2 Level 2 security policy might be different from a 140-3 Level 4. This sounds like we would need either a vendor-defined string known to the verifier, or an ENUMERATED list of "FIPS 140-{2,3} Level {1,2,3,4}" which will be an evolving list. Neither sounds clean. Needs more discussion.
+
+TBD: Tomas to review and add to this text.
 
 ## cc_conf (Common Criteria Conformance) Claim
 
-TBD: Tomas/Mike to add text here.
+TBD: Is there a CC equivalent of the fips_conf claim? There might not be any value to having this claim. Need review by people more expert in CC than me.
 
 # Security Considerations {#sec-cons}
 

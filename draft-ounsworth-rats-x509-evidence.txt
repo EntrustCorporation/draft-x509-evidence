@@ -59,8 +59,7 @@ Table of Contents
    2.  Conventions and Definitions
    3.  Claims
      3.1.  Nonce
-     3.2.  Claims Describing the Entity
-       3.2.1.  ueid (Universal Entity ID) Claim
+     3.2.  ueid (Universal Entity ID) Claim
      3.3.  sueids (Semi-permanent UEIDs) Claim (SUEIDs)
      3.4.  oemid (Hardware OEM Identification) Claim
      3.5.  hwmodel (Hardware Model) Claim
@@ -77,7 +76,7 @@ Table of Contents
      6.1.  Normative References
      6.2.  Informative References
    Appendix A.  Acknowledgements
-   Appendix B.  A.  Full ASN.1
+   Appendix B.  Full ASN.1
    Authors' Addresses
 
 1.  Introduction
@@ -163,11 +162,7 @@ Table of Contents
    See Section 4.1 of [I-D.ietf-rats-eat] for a description of this
    claim.
 
-3.2.  Claims Describing the Entity
-
-   The claims in this section describe the entity itself.
-
-3.2.1.  ueid (Universal Entity ID) Claim
+3.2.  ueid (Universal Entity ID) Claim
 
    The "ueid" claim conveys a UEID, which identifies an individual
    manufactured entity.  This identifier is a globally unique and
@@ -499,7 +494,7 @@ Appendix A.  Acknowledgements
    Slatman, Tiru Reddy, Thomas Fossati, Corey Bonnel, Argenius Kushner,
    James Hagborg.
 
-Appendix B.  A.  Full ASN.1
+Appendix B.  Full ASN.1
 
    TBD: Full ASN.1 goes in here.
 

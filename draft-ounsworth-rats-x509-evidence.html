@@ -1531,7 +1531,20 @@ of <span>[<a href="#I-D.tschofenig-rats-psa-token" class="cite xref">I-D.tschofe
         <h3 id="name-fips_conf-federal-informati">
 <a href="#section-3.10" class="section-number selfRef">3.10. </a><a href="#name-fips_conf-federal-informati" class="section-name selfRef">fips_conf (Federal Information Processing Standards Conformance) Claim</a>
         </h3>
-<p id="section-3.10-1">TBD: Tomas/Mike to add text here.<a href="#section-3.10-1" class="pilcrow">¶</a></p>
+<p id="section-3.10-1">The "fips_conf" claim applies to entity-wide or submodule-wide cryptographic modules and attests whether the cryptographic module is running in FIPS mode. A cryptographic module cannot, in general, know whether it has a valid FIPS certification, but it does know whether it is running in FIPS mode.<a href="#section-3.10-1" class="pilcrow">¶</a></p>
+<p id="section-3.10-2">The FIPS conformance claim is defined as follows:<a href="#section-3.10-2" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.10-3">
+<pre>
+   id-ce-evidence-fips_conf OBJECT IDENTIFIER ::=
+         { id-ce TBD_evidence TBD_fips_conf }
+
+   fipsconf ::= SEQUENCE {
+       fipsconf    BOOLEAN
+   }
+</pre><a href="#section-3.10-3" class="pilcrow">¶</a>
+</div>
+<p id="section-3.10-4">TBD: Perhaps there is more data that needs to be here? Such as, the device may need to attest the Security Policy under which it is currently operating since for example a FIPS 140-2 Level 2 security policy might be different from a 140-3 Level 4. This sounds like we would need either a vendor-defined string known to the verifier, or an ENUMERATED list of "FIPS 140-{2,3} Level {1,2,3,4}" which will be an evolving list. Neither sounds clean. Needs more discussion.<a href="#section-3.10-4" class="pilcrow">¶</a></p>
+<p id="section-3.10-5">TBD: Tomas to review and add to this text.<a href="#section-3.10-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="ccconf-common-criteria-conformance-claim">
@@ -1539,7 +1552,7 @@ of <span>[<a href="#I-D.tschofenig-rats-psa-token" class="cite xref">I-D.tschofe
         <h3 id="name-cc_conf-common-criteria-con">
 <a href="#section-3.11" class="section-number selfRef">3.11. </a><a href="#name-cc_conf-common-criteria-con" class="section-name selfRef">cc_conf (Common Criteria Conformance) Claim</a>
         </h3>
-<p id="section-3.11-1">TBD: Tomas/Mike to add text here.<a href="#section-3.11-1" class="pilcrow">¶</a></p>
+<p id="section-3.11-1">TBD: Is there a CC equivalent of the fips_conf claim? There might not be any value to having this claim. Need review by people more expert in CC than me.<a href="#section-3.11-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1639,7 +1652,7 @@ may be worthy of additional appraisal.<a href="#section-4-3" class="pilcrow">¶<
 <dd class="break"></dd>
 <dt id="I-D.tschofenig-rats-psa-token">[I-D.tschofenig-rats-psa-token]</dt>
         <dd>
-<span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Frost, S.</span>, <span class="refAuthor">Brossard, M.</span>, <span class="refAuthor">Shaw, A. L.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"Arm's Platform Security Architecture (PSA) Attestation Token"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-rats-psa-token-13</span>, <time datetime="2023-09-01" class="refDate">1 September 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-13">https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-13</a>&gt;</span>. </dd>
+<span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Frost, S.</span>, <span class="refAuthor">Brossard, M.</span>, <span class="refAuthor">Shaw, A. L.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"Arm's Platform Security Architecture (PSA) Attestation Token"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-rats-psa-token-14</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-14">https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-14</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IANA-Hash">[IANA-Hash]</dt>
         <dd>

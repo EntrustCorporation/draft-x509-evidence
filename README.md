@@ -1,6 +1,6 @@
-# Use of Attestation with Certification Signing Requests
+# X.509-based Attestation Evidence
 
-This is the working area for the individual Internet-Draft, "Use of Attestation with Certification Signing Requests".
+This is the working area for the individual Internet-Draft, "X.509-based Attestation Evidence".
 
 * [Editor's Copy](https://EntrustCorporation.github.io/draft-x509-evidence/#go.draft-ounsworth-rats-x509-evidence.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ounsworth-rats-x509-evidence)

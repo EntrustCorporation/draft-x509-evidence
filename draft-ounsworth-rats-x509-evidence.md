@@ -9,6 +9,15 @@ area: Security
 workgroup: RATS
 keyword: Internet-Draft
 
+venue:
+  group: RATS
+#  type: Working Group
+#  mail: spasm@ietf.org
+#  arch: https://datatracker.ietf.org/wg/lamps/about/
+  github: "EntrustCorporation/draft-x509-evidence"
+  latest: "https://entrustcorporation.github.io/draft-x509-evidence/draft-ounsworth-rats-x509-evidence.html"
+
+
 stand_alone: yes
 pi:
   rfcedstyle: yes

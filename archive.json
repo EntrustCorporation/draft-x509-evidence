@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-26T00:20:57.114600+00:00",
+  "timestamp": "2023-10-29T00:22:57.257357+00:00",
   "repo": "EntrustCorporation/draft-x509-evidence",
   "labels": [
     {
@@ -49,6 +49,23 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOKkDbRc51LS9G",
+      "title": "Review Carl's feedback",
+      "url": "https://github.com/EntrustCorporation/draft-x509-evidence/issues/1",
+      "state": "OPEN",
+      "author": "ounsworth",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://mailarchive.ietf.org/arch/msg/rats/0XCkNkQU6T2bs0GoxIemkuBQVPA/",
+      "createdAt": "2023-10-27T17:09:08Z",
+      "updatedAt": "2023-10-27T17:09:08Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }

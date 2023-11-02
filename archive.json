@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-31T00:21:41.297936+00:00",
+  "timestamp": "2023-11-02T00:21:21.048243+00:00",
   "repo": "EntrustCorporation/draft-x509-evidence",
   "labels": [
     {
@@ -63,6 +63,62 @@
       "body": "https://mailarchive.ietf.org/arch/msg/rats/0XCkNkQU6T2bs0GoxIemkuBQVPA/",
       "createdAt": "2023-10-27T17:09:08Z",
       "updatedAt": "2023-10-27T17:09:08Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOKkDbRc51c4Rr",
+      "title": "`software-component` claim structure",
+      "url": "https://github.com/EntrustCorporation/draft-x509-evidence/issues/2",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "As much as I like the idea of reusing PSA semantics, I think there's a chance here to \"sit on the shoulder of the giant\" (poorly paraphrasing Bernard de Chartres) and see what we can improve.  In particular, I think there are some low-hanging fruits to be reaped from the work we've done on the verifier side, i.e., the guy who needs to make sense of the evidence blob.\r\n\r\nHere are a few observations and proposals for discussion:\r\n\r\n1. `software-component` is a bit of a misnomer, because it's not just software/firmware that gets measured, it's also other kinds of blobs (e.g., configuration).  A better, more generic name for the claim could be `measured-component`.\r\n\r\n2. `Measurement Type` is actually the hash algorithm identifier that is used to compute the digest, so using `Type` is not accurate, and frankly quite confusing.  If I were to rewrite the PSA claim today, I'd group the measurement data (digest and algorithm) in a `digest` type, similar to CoSWID/CoRIM:\r\n\r\n\r\nIn CDDL:\r\n\r\n```cddl\r\ndigest = [\r\n  hash-alg: int. ; codepoint from the COSE algorithms registry\r\n  digest:   bstr ; the actual digest\r\n]\r\n```\r\n\r\nIn ASN.1:\r\n```asn.1\r\nDigest ::= SEQUENCE {\r\n  hashAlgorithm AlgorithmIdentifier, -- OID for the hash algorithm\r\n  digest        BIT STRING\r\n}\r\n```\r\n\r\n3. When building the verifier, we learned the importance of stable identifiers for measured components.  These identifiers help in tracking the same measured item across updates and enable higher-quality signalling from the appraisal procedure to relying parties.  A \"component identifier\" that provides a stable name along with an optional version is a good start.  PSA got that bit right but makes it optional which doesn't promote the best practice.  Again, with the benefit of hindsight:\r\n\r\nIn CDDL:\r\n\r\n```cddl\r\ncomponent-identifier = [\r\n  name:      tstr\r\n  ? version: tstr\r\n]\r\n```\r\n\r\nIn ASN.1:\r\n```asn.1\r\nComponentIdentifier ::= SEQUENCE {\r\n  name    PrintableString,\r\n  version PrintableString OPTIONAL\r\n}\r\n```\r\n\r\nSo, to summarise, the data format I'm suggesting for \u00a73.9 is:\r\n\r\nIn CDDL:\r\n\r\n```cddl\r\nmeasured-component = {\r\n  component-id: component-identifier\r\n  measurement: digest\r\n  signer-id: ckt ; COSE Key thumbprint\r\n}\r\n```\r\n\r\nIn ASN.1:\r\n\r\n```asn.1\r\nMeasuredComponent ::= SEQUENCE {\r\n  componentId ComponentIdentifier,\r\n  measurement Digest,\r\n  signerId KeyIdentifier\r\n}\r\n```\r\n\r\n",
+      "createdAt": "2023-10-31T13:42:09Z",
+      "updatedAt": "2023-10-31T13:42:09Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOKkDbRc51e75q",
+      "title": "Review by Michael Richardson ",
+      "url": "https://github.com/EntrustCorporation/draft-x509-evidence/issues/3",
+      "state": "OPEN",
+      "author": "hannestschofenig",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Tschofenig, Hannes [<hannes.tschofenig=40siemens.com@dmarc.ietf.org>](mailto:hannes.tschofenig=40siemens.com@dmarc.ietf.org) wrote:\r\n    > during the last few months members of the attestation design team have\r\n    > made a lot of progress on the CSR attestation draft and hence we\r\n    > started the next \"phase\" by working on an evidence format that meets\r\n    > the needs of the HSM community. This evidence format re-uses the\r\n    > encoding of an X.509 certificate.\r\n\r\nokay... but it doesn't really say exactly how.\r\n\r\nI am reading that you have basically taken claims from EAT and encoded this in ASN.1.  I see all those claims, and that's great.\r\n\r\nYou write that it's an X509 certificate extension.\r\nBut, I don't see a clear extension in the document.\r\nIs each claim a new extension, or are they bundled into a single extension?\r\n\r\nI understand the use of RFC5280 format certificate objects because HSM\r\nvendors are used to signing certificate objects.    Well... but are they?\r\nI can see that some HSMs, which are used for running CAs would be, but are\r\nHSMs like Yubikeys also likely?   I see that kind of device (kept in a locked\r\ndrawer) is likely 95% of code signers.\r\n\r\nI understand that the certificate's Issuer would be the device's AK, which is signed by the HSM vendor.  The SubjectKeyInfo would be the public key in the CSR request?  What about the SubjectDN?  What other extensions might be present?",
+      "createdAt": "2023-10-31T18:10:39Z",
+      "updatedAt": "2023-10-31T18:10:49Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "hannestschofenig",
+          "authorAssociation": "COLLABORATOR",
+          "body": "My response: https://mailarchive.ietf.org/arch/msg/spasm/9UqivoLaDW0ewQk9ZGC7CAJUn9M/",
+          "createdAt": "2023-10-31T18:10:49Z",
+          "updatedAt": "2023-10-31T18:10:49Z"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOKkDbRc51nX5w",
+      "title": "TomasG's feedback",
+      "url": "https://github.com/EntrustCorporation/draft-x509-evidence/issues/4",
+      "state": "OPEN",
+      "author": "ounsworth",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "> Great work. \r\nA few comments from a first read-through.\r\nSection 3.6, hwversion. I think the encoding should be PrintableString (like in swversion), as it is defined as a text string.\r\nSection 3.7 swversion. The eat reference should be to 4.2.7 instead of 4.2.5.\r\nSection 3.9, software component claims. For Measurement Value it says \"For interoperability, SHA-256 is assumed to be the default\". As this value can not be excluded from the sequence a verifyer can't really make any default decisions. I think the \"default\" statement is aimed at the producer, is it? In that case this can be rephrased to something like \"For interoperability, SHA-256 SHOULD be used to produce this value\".\r\nFor measurement-desc, should it say (OPTIONAL)?\r\n3.10 and 3.11: I would like HSM manufacturers to review this, and make any assertion to what an HSM could but in these values.\r\nI have not seen any HSM where FIPS mode can be configured for L2, L3 or L4. That's more for the HW certification, while fips mode enforcements are for the SW, hence the HSM itself can not configure itself into i.e. L2 or L4.\r\nCheers,\r\nTomas\r\n\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/spasm/zvS83Ju-hMuC5TGPcr9uTZBdtAw/",
+      "createdAt": "2023-11-01T23:31:15Z",
+      "updatedAt": "2023-11-01T23:34:46Z",
       "closedAt": null,
       "comments": []
     }

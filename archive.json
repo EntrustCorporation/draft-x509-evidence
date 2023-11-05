@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-11-02T00:21:21.048243+00:00",
+  "timestamp": "2023-11-05T00:23:31.591877+00:00",
   "repo": "EntrustCorporation/draft-x509-evidence",
   "labels": [
     {
@@ -119,6 +119,22 @@
       "body": "> Great work. \r\nA few comments from a first read-through.\r\nSection 3.6, hwversion. I think the encoding should be PrintableString (like in swversion), as it is defined as a text string.\r\nSection 3.7 swversion. The eat reference should be to 4.2.7 instead of 4.2.5.\r\nSection 3.9, software component claims. For Measurement Value it says \"For interoperability, SHA-256 is assumed to be the default\". As this value can not be excluded from the sequence a verifyer can't really make any default decisions. I think the \"default\" statement is aimed at the producer, is it? In that case this can be rephrased to something like \"For interoperability, SHA-256 SHOULD be used to produce this value\".\r\nFor measurement-desc, should it say (OPTIONAL)?\r\n3.10 and 3.11: I would like HSM manufacturers to review this, and make any assertion to what an HSM could but in these values.\r\nI have not seen any HSM where FIPS mode can be configured for L2, L3 or L4. That's more for the HW certification, while fips mode enforcements are for the SW, hence the HSM itself can not configure itself into i.e. L2 or L4.\r\nCheers,\r\nTomas\r\n\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/spasm/zvS83Ju-hMuC5TGPcr9uTZBdtAw/",
       "createdAt": "2023-11-01T23:31:15Z",
       "updatedAt": "2023-11-01T23:34:46Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOKkDbRc513ZCR",
+      "title": "FIPS claim should optionally include CMVP certificate number",
+      "url": "https://github.com/EntrustCorporation/draft-x509-evidence/issues/5",
+      "state": "OPEN",
+      "author": "ounsworth",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-04T18:14:55Z",
+      "updatedAt": "2023-11-04T18:14:55Z",
       "closedAt": null,
       "comments": []
     }

@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-11-07T00:21:37.332154+00:00",
+  "timestamp": "2023-11-09T00:21:39.392123+00:00",
   "repo": "EntrustCorporation/draft-x509-evidence",
   "labels": [
     {
@@ -135,6 +135,22 @@
       "body": "",
       "createdAt": "2023-11-04T18:14:55Z",
       "updatedAt": "2023-11-04T18:14:55Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOKkDbRc52MC5y",
+      "title": "Review MSJ's feedback",
+      "url": "https://github.com/EntrustCorporation/draft-x509-evidence/issues/6",
+      "state": "OPEN",
+      "author": "ounsworth",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://mailarchive.ietf.org/arch/msg/spasm/gv_poYF1CyiBzp7NQmy653HDzgk/",
+      "createdAt": "2023-11-08T06:47:55Z",
+      "updatedAt": "2023-11-08T06:47:55Z",
       "closedAt": null,
       "comments": []
     }

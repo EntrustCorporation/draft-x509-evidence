@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-11-09T00:21:39.392123+00:00",
+  "timestamp": "2023-11-12T00:23:45.052711+00:00",
   "repo": "EntrustCorporation/draft-x509-evidence",
   "labels": [
     {
@@ -151,6 +151,22 @@
       "body": "https://mailarchive.ietf.org/arch/msg/spasm/gv_poYF1CyiBzp7NQmy653HDzgk/",
       "createdAt": "2023-11-08T06:47:55Z",
       "updatedAt": "2023-11-08T06:47:55Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOKkDbRc52W7ZV",
+      "title": "Clarifying the FIPS/CC Claims",
+      "url": "https://github.com/EntrustCorporation/draft-x509-evidence/issues/7",
+      "state": "OPEN",
+      "author": "hannestschofenig",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "\r\nWe briefly talked about the relationship between the DLOA claim and the newly defined FIPS claim in the draft. \r\n\r\nThe difference is that DLOAs are essentially endorsements and the newly defined FIPS claim is evidence. The idea is that the device performs a self-test to compute the value. \r\n\r\n[CW] In that case, perhaps self-test would be a better name.\r\n\r\n",
+      "createdAt": "2023-11-09T14:16:52Z",
+      "updatedAt": "2023-11-09T14:16:52Z",
       "closedAt": null,
       "comments": []
     }

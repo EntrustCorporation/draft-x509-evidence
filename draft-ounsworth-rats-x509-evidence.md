@@ -83,18 +83,18 @@ a Verifier.
 
 # Introduction
 
-Trusted execution environments, like secure elements and hardware security
-modules, are now widely used, which provide a safe environment to place
-security sensitive code, such as cryptography, secure boot, secure storage,
+Embedded security environments, such as TEEs, TPMs, secure elements and hardware security
+modules, are now widely used. They can provide specific safety features which allow
+security-sensitive code to run, perform cryptographic operations, offer secure boot or secure storage,
 and other essential security functions.  These security functions are
-typically exposed through a narrow and well-defined interface, and can be
-used by operating system libraries and applications.
+typically exposed through narrow and well-defined interfaces, and can be
+used by and relied upon by operating system libraries and applications.
 
 When a Certificate Signing Request (CSR) library is requesting a certificate
-from a Certification Authority (CA), a PKI end entity may wish to provide
-Evidence of the security properties of the trusted execution environment
-in which the private key is stored. This Evidence is to be verified by a
-Relying Party, such as the Registration Authority or the Certification
+be issued by a Certification Authority (CA), a PKI End Entity may wish to provide
+Evidence of the security properties of the Attesting Environment
+in which the private key (known as a Target Environment or TE in RATS terminology) is stored, or attributes of the private key (TE) itself. 
+This Evidence is to be verified by a Relying Party, such as the Registration Authority or the Certification
 Authority as part of validating an incoming CSR against a given certificate
 policy. {{I-D.ietf-lamps-csr-attestation}} defines how to carry Evidence in
 either PKCS#10 {{RFC2986}} or Certificate Request Message Format (CRMF)
@@ -103,16 +103,16 @@ either PKCS#10 {{RFC2986}} or Certificate Request Message Format (CRMF)
 {{I-D.ietf-lamps-csr-attestation}} is agnostic to the content and the encoding
 of Evidence. To offer interoperability it is necessary to define a format
 that is utilized in a specific deployment environment environment.
-Hardware security modules and other trusted execution environments, which
-have been using ASN.1-based encodings for a long time prefer the use of
+Hardware security modules and other similar environments, which
+have been using ASN.1-based encodings for a long time, prefer the use of
 the same format throughout their software ecosystem. For those use cases
 this specification has been developed.
 
 This specification re-uses the claims defined in {{I-D.ietf-rats-eat}},
 and encodes them as an extension in an X.509 certificate {{RFC5280}}.
 While the encoding of the claims is different to what is defined in
-{{I-D.ietf-rats-eat}}, the semantics of the claims is retained. This
-specification is not an EAP profile, as defined in Section 6 of
+{{I-D.ietf-rats-eat}}, the semantics of the claims are retained. This
+specification is _not_ an EAP profile, as defined in Section 6 of
 {{I-D.ietf-rats-eat}}
 
 This specification was designed to meet the requirements published by the
@@ -130,9 +130,11 @@ may also be used in other context.
 This document re-uses the terms defined in {{RFC9334}} related to remote
 attestation. Readers of this document are assumed to be familiar with
 the following terms: Evidence, Claim, Attestation Result, Attester,
-Verifier, and Relying Party.
+Verifier, Attesting Environment, Target Environment, and Relying Party.
 
 # Claims
+
+TBD: some of the claims below seem to pertain to specific Attesting Environments, others (nonce) relate to the production of the Evidence, and yet others are related to Target Environments (e.g. a private key or other PKCS11 object) - do we need to define anything about that in this specification?
 
 ## Nonce
 
@@ -382,6 +384,36 @@ TBD: Tomas to review and add to this text.
 ## cc_conf (Common Criteria Conformance) Claim
 
 TBD: Is there a CC equivalent of the fips_conf claim? There might not be any value to having this claim. Need review by people more expert in CC than me.
+
+## not_exportable (PKCS11 CKA_NOT_EXPORTABLE) Claim
+
+This claim pertains to the key used to sign this Certificate Signing Request, and describes whether or not the specific key bytes can be extracted from the Attesting Environment, with the same semantics as described by PKCS11.
+
+The "not_exportable" conformance claim is defined as follows:
+
+~~~
+   id-ce-evidence-not_exportable OBJECT IDENTIFIER ::=
+         { id-ce TBD_evidence TBD_key_not_exportable }
+
+   keynotexportable ::= SEQUENCE {
+       keynotexportable    BOOLEAN
+   }
+~~~
+
+## never_exportable (PKCS11 CKA_NEVER_EXPORTABLE) Claim
+
+This claim pertains to the key used to sign this Certificate Signing Request, and describes whether or not the specific key bytes have ever been extracted from the Attesting Environment, with the same semantics as described by PKCS11.
+
+The "never_exportable" conformance claim is defined as follows:
+
+~~~
+   id-ce-evidence-never_exportable OBJECT IDENTIFIER ::=
+         { id-ce TBD_evidence TBD_key_never_exportable }
+
+   keyneverexportable ::= SEQUENCE {
+       keyneverexportable    BOOLEAN
+   }
+~~~
 
 # Security Considerations {#sec-cons}
 

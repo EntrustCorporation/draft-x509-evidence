@@ -50,6 +50,12 @@ author:
       org: Siemens
       email: hannes.tschofenig@gmx.net
 
+    -
+      ins: J. Kemp
+      name: John Kemp
+      org: Bloomberg
+      email: jkemp63@bloomberg.net
+
 normative:
   RFC2119:
   RFC9334:

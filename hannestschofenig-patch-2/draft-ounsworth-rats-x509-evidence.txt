@@ -5,8 +5,8 @@
 RATS                                                        M. Ounsworth
 Internet-Draft                                                   Entrust
 Intended status: Standards Track                           H. Tschofenig
-Expires: 25 April 2024                                           Siemens
-                                                         23 October 2023
+Expires: 20 June 2024                                            Siemens
+                                                        18 December 2023
 
 
                     X.509-based Attestation Evidence
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 April 2024.
+   This Internet-Draft will expire on 20 June 2024.
 
 Copyright Notice
 
@@ -455,9 +455,9 @@ Table of Contents
    [I-D.ietf-rats-eat]
               Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
               Wallace, "The Entity Attestation Token (EAT)", Work in
-              Progress, Internet-Draft, draft-ietf-rats-eat-22, 14
-              October 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-rats-eat-22>.
+              Progress, Internet-Draft, draft-ietf-rats-eat-24, 16
+              December 2023, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-rats-eat-24>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -498,9 +498,9 @@ Table of Contents
               Tschofenig, H., Frost, S., Brossard, M., Shaw, A. L., and
               T. Fossati, "Arm's Platform Security Architecture (PSA)
               Attestation Token", Work in Progress, Internet-Draft,
-              draft-tschofenig-rats-psa-token-14, 23 October 2023,
+              draft-tschofenig-rats-psa-token-20, 18 December 2023,
               <https://datatracker.ietf.org/doc/html/draft-tschofenig-
-              rats-psa-token-14>.
+              rats-psa-token-20>.
 
    [IANA-Hash]
               IANA, "Hash Function Textual Names", 2023,
@@ -523,14 +523,17 @@ Appendix A.  Acknowledgements
    of the LAMPS working group.  This specification has been developed
    based on discussions in that design team.
 
-   The following persons, in no specific order, contributed to the work:
-   Richard Kettlewell, Chris Trufan, Bruno Couillard, Jean-Pierre Fiset,
-   Sander Temme, Jethro Beekman, Zsolt Rózsahegyi, Ferenc Pető, Mike
-   Agrenius Kushner, Tomas Gustavsson, Dieter Bong, Christopher Meyer,
-   Michael StJohns, Carl Wallace, Michael Ricardson, Tomofumi Okubo,
-   Olivier Couillard, John Gray, Eric Amador, Johnson Darren, Herman
-   Slatman, Tiru Reddy, Thomas Fossati, Corey Bonnel, Argenius Kushner,
-   James Hagborg.
+   The following persons, in no specific order, were part of the design
+   team: Richard Kettlewell, Chris Trufan, Bruno Couillard, Jean-Pierre
+   Fiset, Sander Temme, Jethro Beekman, Zsolt Rózsahegyi, Ferenc Pető,
+   Mike Agrenius Kushner, Tomas Gustavsson, Dieter Bong, Christopher
+   Meyer, Michael StJohns, Carl Wallace, Michael Ricardson, Tomofumi
+   Okubo, Olivier Couillard, John Gray, Eric Amador, Johnson Darren,
+   Herman Slatman, Tiru Reddy, Thomas Fossati, Corey Bonnel, Argenius
+   Kushner, James Hagborg.
+
+   We specifically would like to thank the contributions from Jean-
+   Pierre Fiset and Johnson Darren.
 
 Appendix B.  Full ASN.1
 

@@ -431,13 +431,16 @@ This specification is the work of a design team created by the chairs
 of the LAMPS working group. This specification has been developed
 based on discussions in that design team.
 
-The following persons, in no specific order, contributed to the work:
+The following persons, in no specific order, were part of the design team:
 Richard Kettlewell, Chris Trufan, Bruno Couillard, Jean-Pierre Fiset,
 Sander Temme, Jethro Beekman, Zsolt Rózsahegyi, Ferenc Pető, Mike Agrenius
 Kushner, Tomas Gustavsson, Dieter Bong, Christopher Meyer, Michael StJohns,
 Carl Wallace, Michael Ricardson, Tomofumi Okubo, Olivier Couillard, John
 Gray, Eric Amador, Johnson Darren, Herman Slatman, Tiru Reddy, Thomas
 Fossati, Corey Bonnel, Argenius Kushner, James Hagborg.
+
+We specifically would like to thank the contributions from Jean-Pierre Fiset
+and Johnson Darren.
 
 # Full ASN.1 {#full-asn1}
 

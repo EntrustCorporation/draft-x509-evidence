@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-30T00:21:25.849510+00:00",
+  "timestamp": "2024-02-01T00:22:53.419292+00:00",
   "repo": "EntrustCorporation/draft-x509-evidence",
   "labels": [
     {
@@ -134,9 +134,17 @@
       "labels": [],
       "body": "",
       "createdAt": "2023-11-04T18:14:55Z",
-      "updatedAt": "2023-11-04T18:14:55Z",
+      "updatedAt": "2024-01-30T15:04:06Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "dieterbong",
+          "authorAssociation": "NONE",
+          "body": "It would be great to include the certificate number ... but I'm not sure this is feasable. \r\nActually you go through the following (very simplified) steps: implement and build the to-be-validated (HSM-)image -> lab writes evaluation report -> NIST validates and issues certificate including certificate number. At this point, \r\n- you cannot change the image anymore and include the certificate number. \r\n- you may possibly ship a (signed) file that holds the certificate number, but how much can the Verifier trust such file (it may have been replaced by another file of the same signer, pointing to another certificate for a higher certification level). \r\n- you may ???\r\n",
+          "createdAt": "2024-01-30T15:04:04Z",
+          "updatedAt": "2024-01-30T15:04:04Z"
+        }
+      ]
     },
     {
       "number": 6,
@@ -167,6 +175,22 @@
       "body": "\r\nWe briefly talked about the relationship between the DLOA claim and the newly defined FIPS claim in the draft. \r\n\r\nThe difference is that DLOAs are essentially endorsements and the newly defined FIPS claim is evidence. The idea is that the device performs a self-test to compute the value. \r\n\r\n[CW] In that case, perhaps self-test would be a better name.\r\n\r\n",
       "createdAt": "2023-11-09T14:16:52Z",
       "updatedAt": "2023-11-09T14:16:52Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 13,
+      "id": "I_kwDOKkDbRc59p6mb",
+      "title": "FIPS/CC claims",
+      "url": "https://github.com/EntrustCorporation/draft-x509-evidence/issues/13",
+      "state": "OPEN",
+      "author": "dieterbong",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "CABF Baseline Requirements come with various requirements for FIPS and/or CC certification: \r\n- 6.2.7.2 : \"FIPS 140\u20102 Level 3, Common Criteria EAL 4+ (ALC_FLR.2),\"\r\n- 6.2.7.3 : \"FIPS 140\u20102 level 2 or Common Criteria EAL 4+\"\r\n- and a few more sections, repeating the above requirements.\r\n\r\nI can imagine that CA operators, including CA Operaters adhering to other requirements than those of CABF, appreciate extracting this exact information from a certification claim. What about the following claim, encoded as an ASN.1 SEQUENCE:\r\n1. certification scheme: enumeration (0) FIPS 140, (1) Common Criteria, ... (maybe (2) PCI, ...)\r\n2. scheme version: printable string? ; the version is specific to the certification, e.g. \"3\" -> in combination with enumeration=FIPS meaning \"FIPS 140-3\" but in combination with enumeration=PCI meaning PCI version 3, \"3.1\" in combination with enumeration=CC meaning CC version 3.1 but in combination with enumeration=FIPS ... well, this would be an error.\r\n3. certification level: integer? i.e. 1..4 for FIPS, 1..7 as CC EAL level, empty PCI. Or printable string to allow for encoding of the CC augmentation, i.e. \"1\"..\"4\" for FIPS, \"1\" ... \"4+\"...\"7+\" for CC, empty for PCI\r\n4. Ideally even the certificate number as printable string, e.g. \"4674\" (the most recent FIPS certificate number at the time of writing), \"BSI-DSZ-CC-1211-2023\" (the most recent CC certificate for a digital signature product on https://www.commoncriteriaportal.org/products/index.cfm ). But see my comment https://github.com/EntrustCorporation/draft-x509-evidence/issues/5#issuecomment-1917089290 \r\n\r\n",
+      "createdAt": "2024-01-30T15:26:35Z",
+      "updatedAt": "2024-01-30T15:26:35Z",
       "closedAt": null,
       "comments": []
     }
